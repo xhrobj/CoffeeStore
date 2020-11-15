@@ -44,7 +44,7 @@ struct ProductDetail: View {
             Text(product.description)
                 .foregroundColor(.primary)
                 .font(.body)
-                .lineLimit(7)
+                .lineLimit(10)
                 .padding()
             
             HStack {
