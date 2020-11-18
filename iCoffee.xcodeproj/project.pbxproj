@@ -43,6 +43,7 @@
 		D7CB5D9A2557F0DE0015D4DD /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB5D992557F0DE0015D4DD /* ProductService.swift */; };
 		D7CB5D9D2557F75D0015D4DD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB5D9C2557F75D0015D4DD /* UserService.swift */; };
 		D7CB5DA42558653E0015D4DD /* FirebasePromises.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB5DA32558653E0015D4DD /* FirebasePromises.swift */; };
+		D7FA005425646BDC007E5C65 /* Firebase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		D7CB5D992557F0DE0015D4DD /* ProductService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		D7CB5D9C2557F75D0015D4DD /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D7CB5DA32558653E0015D4DD /* FirebasePromises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePromises.swift; sourceTree = "<group>"; };
+		D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,11 +190,11 @@
 		D7BF4D31253CAE2700C0D68C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D723FCF8255B2F18003B8FFB /* UserViewModel.swift */,
+				D7422367254469CF00FA7FD7 /* AuthViewModel.swift */,
 				D7BF4D32253CAE5A00C0D68C /* ProductViewModel.swift */,
 				D7213A1F253F64300075B2BF /* CartViewModel.swift */,
 				D7CB5D932557BF1B0015D4DD /* OrderViewModel.swift */,
-				D7422367254469CF00FA7FD7 /* AuthViewModel.swift */,
-				D723FCF8255B2F18003B8FFB /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -222,6 +224,7 @@
 			children = (
 				D7BF4D24253C4BB900C0D68C /* FirebaseReference.swift */,
 				D7CB5DA32558653E0015D4DD /* FirebasePromises.swift */,
+				D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				D78F4A8B25338FC000B20D0E /* Product.swift in Sources */,
 				D74222F92540C0D300FA7FD7 /* CheckoutView.swift in Sources */,
 				D7BF4D09253B21BE00C0D68C /* productData.swift in Sources */,
+				D7FA005425646BDC007E5C65 /* Firebase+Extensions.swift in Sources */,
 				D73CB72C25336A3D0035C32C /* iCoffeeApp.swift in Sources */,
 				D7CB5D9A2557F0DE0015D4DD /* ProductService.swift in Sources */,
 				D7102241254CA1F7002E50FC /* LoginView.swift in Sources */,

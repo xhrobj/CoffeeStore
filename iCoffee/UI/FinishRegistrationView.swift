@@ -18,7 +18,7 @@ struct FinishRegistrationView: View {
     @State var address = ""
     
     private var isFieldsCompleted: Bool {
-        name != "" && lastName != "" && telephone != "" && address != ""
+        !name.isEmpty && !lastName.isEmpty && !telephone.isEmpty && !address.isEmpty
     }
     
     var body: some View {

@@ -9,12 +9,26 @@ struct CartView: View {
     
     @ObservedObject var cartVM = CartViewModel()
     
+    private var cartItems: [Product] {
+        cartVM.cart?.items ?? []
+    }
+    
     var body: some View {
+        if !cartItems.isEmpty {
+            renderList()
+        } else {
+            Text("Корзина пустая")
+                .font(.largeTitle)
+                .foregroundColor(.gray)
+        }
+    }
+    
+    func renderList() -> some View {
         NavigationView {
             List {
                 
                 Section {
-                    ForEach(cartVM.cart?.items ?? []) { product in
+                    ForEach(cartItems) { product in
                         HStack {
                             Text(product.name)
                             Spacer()
@@ -28,11 +42,9 @@ struct CartView: View {
                 
                 Section {
                     NavigationLink(destination: CheckoutView()) {
-                            Text("Сделать заказ")
-                        }
+                        Text("Сделать заказ")
+                    }
                 }
-                .disabled(cartVM.cart?.items.isEmpty ?? true)
-                
             }
             .navigationTitle("Корзина")
             .listStyle(GroupedListStyle())

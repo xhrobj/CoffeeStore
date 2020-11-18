@@ -3,20 +3,7 @@
 //  iCoffee
 //
 
-import Firebase
-import CodableFirebase
-
-extension QuerySnapshot {
-    func decode<T: Codable>() -> [T] {
-        documents.compactMap { try? FirebaseDecoder().decode(T.self, from: $0.data()) }
-    }
-}
-
-extension DocumentSnapshot {
-    func decode<T: Codable>() -> T? {
-       try? FirebaseDecoder().decode(T.self, from: data())
-    }
-}
+import Foundation
 
 extension Double {
     var clean: String {
@@ -48,5 +35,20 @@ extension Encodable {
         }
         
         return dictionary
+    }
+}
+
+extension String {
+    
+    static var emailPattern: String {
+        "[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\\.[A-Za-z]{2,4}"
+    }
+    
+    var trimmed: String {
+        return trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    var isEmail: Bool {
+        trimmed.range(of: String.emailPattern, options: .regularExpression) != nil
     }
 }

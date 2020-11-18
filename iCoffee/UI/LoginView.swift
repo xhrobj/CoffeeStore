@@ -17,64 +17,16 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Text(isShowSignup ? "Регистрация" : "Вход")
-                .fontWeight(.heavy)
-                .font(.largeTitle)
-                .padding(.top, 40)
-                .padding(.bottom, 20)
+            
+            renderHeader()
+            
             VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    Text("Email")
-                        .font(.headline)
-                        .fontWeight(.light)
-                        .foregroundColor(Color(.label))
-                        .opacity(0.75)
-                    TextField("Введите ваш email", text: $authVM.email)
-                    Divider()
-                    Text("Пароль")
-                        .font(.headline)
-                        .fontWeight(.light)
-                        .foregroundColor(Color(.label))
-                        .opacity(0.75)
-                    SecureField("Введите пароль", text: $authVM.password)
-                    Divider()
-                    
-                    if isShowSignup {
-                        Text("Повтор пароля")
-                            .font(.headline)
-                            .fontWeight(.light)
-                            .foregroundColor(Color(.label))
-                            .opacity(0.75)
-                        SecureField("Повторите введенный пароль", text: $authVM.repeatPassword)
-                        Divider()
-                    }
-                }
-                .padding(.bottom, 15)
-                .animation(.easeInOut(duration: 0.2))
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        authVM.resetPassword()
-                    }, label: {
-                        Text("Если забыли пароль")
-                            .foregroundColor(Color.gray.opacity(0.5))
-                    })
-                }
+                renderFormFields()
+                renderForgotView()
             }
             .padding(.horizontal, 6)
             
-            Button(action: {
-                isShowSignup ? authVM.signup() : authVM.loginWithPassword()
-            }, label: {
-                Text(isShowSignup ? "Зарегистрироваться" : "Войти")
-                    .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width - 120)
-                    .padding()
-            })
-            .background(Color.blue)
-            .clipShape(Capsule())
-            .padding(.top, 45)
+            renderActionButton()
             
             SignupView(isShowSignup: $isShowSignup)
         }
@@ -90,7 +42,7 @@ struct LoginView: View {
         })
         .alert(isPresented: $isShowAlert) {
             if !authVM.signupFinishMessage.isEmpty {
-               return Alert(title: Text(authVM.signupFinishMessage), dismissButton: .default(Text("OK"), action: {
+                return Alert(title: Text(authVM.signupFinishMessage), dismissButton: .default(Text("OK"), action: {
                     authVM.signupFinishMessage = ""
                     presentationMode.wrappedValue.dismiss()
                 }))
@@ -103,6 +55,86 @@ struct LoginView: View {
         .sheet(isPresented: $isShowFinishRegistration) {
             FinishRegistrationView()
         }
+    }
+    
+    private func renderHeader() -> some View {
+        Text(isShowSignup ? "Регистрация" : "Вход")
+            .fontWeight(.heavy)
+            .font(.largeTitle)
+            .padding(.top, 40)
+            .padding(.bottom, 20)
+    }
+    
+    private func renderForgotView() -> some View {
+        HStack {
+            Spacer()
+            Button(action: {
+                authVM.resetPassword()
+            }, label: {
+                Text("Если забыли пароль")
+                    .foregroundColor(Color.gray.opacity(0.5))
+            })
+        }
+    }
+    
+    private func renderFormFields() -> some View {
+        VStack(alignment: .leading) {
+            Text("Email")
+                .font(.headline)
+                .fontWeight(.light)
+                .foregroundColor(Color(.label))
+                .opacity(0.75)
+            TextField("Введите ваш email", text: $authVM.email)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+            Divider()
+            Text("Пароль")
+                .font(.headline)
+                .fontWeight(.light)
+                .foregroundColor(Color(.label))
+                .opacity(0.75)
+            SecureField("Введите пароль", text: $authVM.password)
+            Divider()
+            
+            if isShowSignup {
+                Text("Повтор пароля")
+                    .font(.headline)
+                    .fontWeight(.light)
+                    .foregroundColor(Color(.label))
+                    .opacity(0.75)
+                SecureField("Повторите введенный пароль", text: $authVM.repeatPassword)
+                Divider()
+            }
+        }
+        .padding(.bottom, 15)
+        .animation(.easeInOut(duration: 0.2))
+    }
+    
+    private func renderActionButton() -> some View {
+        Button(action: {
+            isShowSignup ? authVM.signup() : authVM.loginWithPassword()
+        }, label: {
+            Text(isShowSignup ? "Зарегистрироваться" : "Войти")
+                .foregroundColor(.white)
+                .frame(width: UIScreen.main.bounds.width - 120)
+                .padding()
+        })
+        .background(isFieldsCompleted ? Color.blue : Color.gray)
+        .clipShape(Capsule())
+        .padding(.top, 45)
+        .disabled(!isFieldsCompleted)
+    }
+    
+    private var isFieldsCompleted: Bool {
+        isShowSignup ? isSignupFieldsCompleted : isLoginFieldsCompleted
+    }
+    
+    private var isLoginFieldsCompleted: Bool {
+        authVM.email.isEmail && !authVM.password.isEmpty
+    }
+    
+    private var isSignupFieldsCompleted: Bool {
+        authVM.email.isEmail && !authVM.password.isEmpty && authVM.password == authVM.repeatPassword
     }
 }
 

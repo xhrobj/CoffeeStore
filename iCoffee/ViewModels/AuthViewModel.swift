@@ -57,7 +57,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func loginWithPassword() {
-        tryLogin(email: email, password: password)
+        tryLogin(email: email.trimmed, password: password)
     }
     
     func logout() {
@@ -74,6 +74,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func signup() {
+        let email = self.email.trimmed
         guard !email.isEmpty && !password.isEmpty && !repeatPassword.isEmpty else {
             self.message = "Нужно заполнить email и пароль"
             return
@@ -93,6 +94,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func resetPassword() {
+        let email = self.email.trimmed
         guard !email.isEmpty else {
             self.message = "Нужно заполнить email"
             return
