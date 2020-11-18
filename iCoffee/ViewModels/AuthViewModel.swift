@@ -63,12 +63,12 @@ class AuthViewModel: ObservableObject {
     func logout() {
         Authentication.logOutCurrentUser()
             .sink { _ in
-            } receiveValue: { (isLogouted) in
+            } receiveValue: { [weak self] isLogouted in
                 Authentication.clearKeychain()
-                self.isLogin = false
-                self.hasPin = Authentication.hasPin
-                self.clearModelData()
-                self.message = "Выход выполнен"
+                self?.isLogin = false
+                self?.hasPin = Authentication.hasPin
+                self?.clearModelData()
+                self?.message = "Выход выполнен"
             }
             .store(in: &self.cancelBag)
     }
@@ -87,8 +87,8 @@ class AuthViewModel: ObservableObject {
             .sink { (completion) in
                 guard case .failure(let error) = completion else { return }
                 self.message = error.localizedDescription
-            } receiveValue: { _ in
-                self.signupFinishMessage = "На ваш email отправлено письмо с подтверждением"
+            } receiveValue: { [weak self] _ in
+                self?.signupFinishMessage = "На ваш email отправлено письмо с подтверждением"
             }
             .store(in: &cancelBag)
     }
@@ -103,9 +103,9 @@ class AuthViewModel: ObservableObject {
             .sink { (completion) in
                 guard case .failure(let error) = completion else { return }
                 self.message = error.localizedDescription
-            } receiveValue: { isReseted in
+            } receiveValue: { [weak self] isReseted in
                 if isReseted {
-                    self.signupFinishMessage = "На ваш email отправлено письмо для сброса пароля"
+                    self?.signupFinishMessage = "На ваш email отправлено письмо для сброса пароля"
                 }
             }
             .store(in: &cancelBag)
@@ -132,6 +132,12 @@ class AuthViewModel: ObservableObject {
             return
         }
         pinDigits.remove(at: pinDigits.index(before: pinDigits.endIndex))
+    }
+    
+    deinit {
+        for cancel in cancelBag {
+            cancel.cancel()
+        }
     }
 }
 
@@ -179,7 +185,8 @@ private extension AuthViewModel {
             .sink(receiveCompletion: { completion in
                 guard case .failure(let error) = completion else { return }
                 self.login(isEmailVerified: false, error: error)
-            }, receiveValue: { userRs in
+            }, receiveValue: { [weak self] userRs in
+                guard let self = self else { return }
                 if let user = userRs.user {
                     self.userService.saveLocally(user: user)
                 } else {

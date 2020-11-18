@@ -65,7 +65,6 @@ extension Authentication {
     }
     
     public static var hasPin: Bool {
-        //return login != nil && pinRemembered &&  pin != nil
         return login != nil &&  pin != nil
     }
     

@@ -28,4 +28,10 @@ class UserViewModel: ObservableObject {
             })
             .store(in: &cancelBag)
     }
+    
+    deinit {
+        for cancel in cancelBag {
+            cancel.cancel()
+        }
+    }
 }
