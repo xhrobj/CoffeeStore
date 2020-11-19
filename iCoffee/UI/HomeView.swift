@@ -61,6 +61,7 @@ struct HomeView: View {
                     if authVM.isLogin {
                         if !authVM.hasPin {
                             PinCodeView(mode: .setup)
+                                .environmentObject(authVM)
                         } else if authVM.currentUser?.isCompleteFilled ?? false {
                             CartView()
                         } else {
@@ -68,6 +69,7 @@ struct HomeView: View {
                         }
                     } else if authVM.hasPin {
                         PinCodeView(mode: .check)
+                            .environmentObject(authVM)
                     } else {
                         LoginView()
                     }
