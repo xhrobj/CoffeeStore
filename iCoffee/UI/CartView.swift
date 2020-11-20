@@ -14,12 +14,24 @@ struct CartView: View {
     }
     
     var body: some View {
-        if !cartItems.isEmpty {
-            renderList()
+        if cartVM.isLoading {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: Color.gray))
+                .scaleEffect(2, anchor: .center)
         } else {
-            Text("Корзина пустая")
-                .font(.largeTitle)
-                .foregroundColor(.gray)
+            render(cart: cartVM.cart)
+        }
+    }
+    
+    func render(cart: Cart?) -> some View {
+        Group {
+            if let cart = cart, !cart.items.isEmpty {
+                renderList()
+            } else {
+                Text("Корзина пустая")
+                    .font(.largeTitle)
+                    .foregroundColor(.gray)
+            }
         }
     }
     

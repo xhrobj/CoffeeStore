@@ -13,14 +13,17 @@ class CartViewModel: ObservableObject {
     let cartService = CartService()
     
     @Published var cart: Cart?
+    @Published var isLoading = false
     
     init() {
         activateFirebaseListener()
     }
     
     private func activateFirebaseListener() {
+        isLoading = true
         cartService.firebaseCartListener(userId: userService.currentUserId) { cart in
             self.cart = cart
+            self.isLoading = false
         }
     }
     

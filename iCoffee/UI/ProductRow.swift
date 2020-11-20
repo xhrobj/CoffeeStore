@@ -6,6 +6,9 @@
 import SwiftUI
 
 struct ProductRow: View {
+    
+    @ObservedObject var authViewModel: AuthViewModel
+    
     var categoryName: String
     var products: [Product]
     
@@ -16,7 +19,7 @@ struct ProductRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(products) {drink in
-                        NavigationLink(destination: ProductDetail(product: drink)) {
+                        NavigationLink(destination: ProductDetail(authViewModel: authViewModel, product: drink)) {
                             ProductItem(product: drink)
                                 .frame(width: 300)
                                 .padding(.trailing, 30)
@@ -30,6 +33,6 @@ struct ProductRow: View {
 
 struct DrinkRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductRow(categoryName: "HOT", products: productData)
+        ProductRow(authViewModel: AuthViewModel(), categoryName: "HOT", products: productData)
     }
 }

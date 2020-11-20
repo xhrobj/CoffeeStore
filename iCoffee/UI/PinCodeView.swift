@@ -11,35 +11,42 @@ struct PinCodeView: View {
         case check, setup
     }
     
-    @EnvironmentObject var authVM: AuthViewModel
-    
     @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var authViewModel: AuthViewModel
     
     let mode: Mode
     
     var body: some View {
-        VStack(spacing: 50) {
-            VStack(spacing: 10) {
-                Text(mode == .setup ? "создайте пинкод" : "введите пинкод")
-                    .font(.title2)
-                makeCircleResultsBlock()
-                    .modifier(Shake(animatableData: CGFloat(authVM.wrongAttempts)))
+        ZStack {
+            if authViewModel.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                    .scaleEffect(2, anchor: .center)
             }
-            makeDigitButtonsBlock()
-            makeActionButtonsBlock()
-            
+            VStack(spacing: 50) {
+                VStack(spacing: 10) {
+                    Text(mode == .setup ? "создайте пинкод" : "введите пинкод")
+                        .font(.title2)
+                    makeCircleResultsBlock()
+                        .modifier(Shake(animatableData: CGFloat(authViewModel.wrongAttempts)))
+                }
+                makeDigitButtonsBlock()
+                makeActionButtonsBlock()
+                
+            }
         }
         .onAppear() {
             if mode == .check {
-                authVM.authWithBiometry()
+                authViewModel.authWithBiometry()
             }
         }
     }
     
     func makeCircleResultsBlock() -> some View {
         HStack(spacing: 10) {
-            ForEach((0..<authVM.maxPinDigitCount)) {
-                makeCircleResult(value: authVM.pinDigits[safeIndex: $0])
+            ForEach((0..<authViewModel.maxPinDigitCount)) {
+                makeCircleResult(value: authViewModel.pinDigits[safeIndex: $0])
             }
         }
     }
@@ -69,14 +76,14 @@ struct PinCodeView: View {
         HStack {
             if mode == .check {
                 Button("TouchId") {
-                    authVM.authWithBiometry()
+                    authViewModel.authWithBiometry()
                 }
             }
             
             Spacer()
             
             Button("Удалить цифру") {
-                authVM.removeLastPinDigit()
+                authViewModel.removeLastPinDigit()
             }
         }
         .padding()
@@ -100,9 +107,9 @@ struct PinCodeView: View {
         Button(action: {
             withAnimation(.default) {
                 if mode == .check {
-                    authVM.digitPressForCheck(value: title)
+                    authViewModel.digitPressForCheck(value: title)
                 } else {
-                    authVM.appendDigitToPin(value: title)
+                    authViewModel.appendDigitToPin(value: title)
                 }
             }
         }) {

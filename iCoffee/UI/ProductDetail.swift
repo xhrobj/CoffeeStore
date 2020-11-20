@@ -7,9 +7,9 @@ import SwiftUI
 
 struct ProductDetail: View {
     
-    @EnvironmentObject var authVM: AuthViewModel
-    
     @State var isShowAlert = false
+    
+    @ObservedObject var authViewModel: AuthViewModel
     
     var product: Product
     
@@ -49,7 +49,7 @@ struct ProductDetail: View {
             
             HStack {
                 Spacer()
-                OrderButton(isShowAlert: $isShowAlert, product: product)
+                OrderButton(isShowAlert: $isShowAlert, isLogin: authViewModel.isLogin, product: product)
                 Spacer()
             }
             .padding(.top, 50)
@@ -57,7 +57,7 @@ struct ProductDetail: View {
         .edgesIgnoringSafeArea(.top)
         .alert(isPresented: $isShowAlert) {
             Alert(
-                title: Text(authVM.isLogin ? "Товар добавлен в корзину!" : "Не добавлен! Выполните вход в корзину"),
+                title: Text(authViewModel.isLogin ? "Товар добавлен в корзину!" : "Не добавлен! Выполните вход в корзину"),
                 dismissButton: .default(Text("OK"))
             )
         }
@@ -66,18 +66,18 @@ struct ProductDetail: View {
 
 struct OrderButton: View {
     
-    @EnvironmentObject var authVM: AuthViewModel
-    
     @ObservedObject var cartVM = CartViewModel()
     
     @Binding var isShowAlert: Bool
+    
+    let isLogin: Bool
     
     var product: Product
     
     var body: some View {
         Button(action: {
             isShowAlert.toggle()
-            if authVM.isLogin {
+            if isLogin {
                 cartVM.addToCart(product: product)
             }
         }) {
@@ -93,6 +93,6 @@ struct OrderButton: View {
 
 struct ProductDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetail(product: productData[0])
+        ProductDetail(authViewModel: AuthViewModel(), product: productData[0])
     }
 }

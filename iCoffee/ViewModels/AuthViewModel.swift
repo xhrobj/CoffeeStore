@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
     
     let maxPinDigitCount = 6
     
+    @Published var isLoading = false
     @Published var email = ""
     @Published var password = ""
     @Published var repeatPassword = ""
@@ -181,10 +182,14 @@ private extension AuthViewModel {
     }
     
     func tryLogin(email: String, password: String) {
+        isLoading = true
         Authentication.loginUserWith(email: email, password: password)
-            .sink(receiveCompletion: { completion in
-                guard case .failure(let error) = completion else { return }
-                self.login(isEmailVerified: false, error: error)
+            .sink(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                guard case .failure(let error) = completion else {
+                    return
+                }
+                self?.login(isEmailVerified: false, error: error)
             }, receiveValue: { [weak self] userRs in
                 guard let self = self else { return }
                 if let user = userRs.user {

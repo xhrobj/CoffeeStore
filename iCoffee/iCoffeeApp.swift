@@ -20,12 +20,10 @@ struct iCoffeeApp: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    @StateObject var authVM = AuthViewModel()
-    
     var body: some Scene {
        
         WindowGroup {
-            ContentView().environmentObject(authVM)
+            ContentView()
         }
     }
 }

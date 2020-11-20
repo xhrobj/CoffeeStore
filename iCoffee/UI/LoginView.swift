@@ -7,48 +7,54 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @EnvironmentObject var authVM: AuthViewModel
-    
     @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var authViewModel: AuthViewModel
     
     @State var isShowSignup = false
     @State var isShowFinishRegistration = false
     @State var isShowAlert = false
     
     var body: some View {
-        VStack {
-            
-            renderHeader()
-            
-            VStack(alignment: .leading) {
-                renderFormFields()
-                renderForgotView()
+        ZStack {
+            if authViewModel.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                    .scaleEffect(2, anchor: .center)
             }
-            .padding(.horizontal, 6)
-            
-            renderActionButton()
-            
-            SignupView(isShowSignup: $isShowSignup)
+            VStack {
+                renderHeader()
+                
+                VStack(alignment: .leading) {
+                    renderFormFields()
+                    renderForgotView()
+                }
+                .padding(.horizontal, 6)
+                
+                renderActionButton()
+                
+                SignupView(isShowSignup: $isShowSignup)
+            }
         }
-        .onChange(of: authVM.message, perform: { (message) in
+        .onChange(of: authViewModel.message, perform: { (message) in
             if !message.isEmpty {
                 isShowAlert.toggle()
             }
         })
-        .onChange(of: authVM.signupFinishMessage, perform: { (signupFinishMessage) in
+        .onChange(of: authViewModel.signupFinishMessage, perform: { (signupFinishMessage) in
             if !signupFinishMessage.isEmpty {
                 isShowAlert.toggle()
             }
         })
         .alert(isPresented: $isShowAlert) {
-            if !authVM.signupFinishMessage.isEmpty {
-                return Alert(title: Text(authVM.signupFinishMessage), dismissButton: .default(Text("OK"), action: {
-                    authVM.signupFinishMessage = ""
+            if !authViewModel.signupFinishMessage.isEmpty {
+                return Alert(title: Text(authViewModel.signupFinishMessage), dismissButton: .default(Text("OK"), action: {
+                    authViewModel.signupFinishMessage = ""
                     presentationMode.wrappedValue.dismiss()
                 }))
             } else {
-                return Alert(title: Text(authVM.message), dismissButton: .default(Text("OK"), action: {
-                    authVM.message = ""
+                return Alert(title: Text(authViewModel.message), dismissButton: .default(Text("OK"), action: {
+                    authViewModel.message = ""
                 }))
             }
         }
@@ -69,7 +75,7 @@ struct LoginView: View {
         HStack {
             Spacer()
             Button(action: {
-                authVM.resetPassword()
+                authViewModel.resetPassword()
             }, label: {
                 Text("Если забыли пароль")
                     .foregroundColor(Color.gray.opacity(0.5))
@@ -84,7 +90,7 @@ struct LoginView: View {
                 .fontWeight(.light)
                 .foregroundColor(Color(.label))
                 .opacity(0.75)
-            TextField("Введите ваш email", text: $authVM.email)
+            TextField("Введите ваш email", text: $authViewModel.email)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
             Divider()
@@ -93,7 +99,7 @@ struct LoginView: View {
                 .fontWeight(.light)
                 .foregroundColor(Color(.label))
                 .opacity(0.75)
-            SecureField("Введите пароль", text: $authVM.password)
+            SecureField("Введите пароль", text: $authViewModel.password)
             Divider()
             
             if isShowSignup {
@@ -102,7 +108,7 @@ struct LoginView: View {
                     .fontWeight(.light)
                     .foregroundColor(Color(.label))
                     .opacity(0.75)
-                SecureField("Повторите введенный пароль", text: $authVM.repeatPassword)
+                SecureField("Повторите введенный пароль", text: $authViewModel.repeatPassword)
                 Divider()
             }
         }
@@ -112,7 +118,7 @@ struct LoginView: View {
     
     private func renderActionButton() -> some View {
         Button(action: {
-            isShowSignup ? authVM.signup() : authVM.loginWithPassword()
+            isShowSignup ? authViewModel.signup() : authViewModel.loginWithPassword()
         }, label: {
             Text(isShowSignup ? "Зарегистрироваться" : "Войти")
                 .foregroundColor(.white)
@@ -130,11 +136,11 @@ struct LoginView: View {
     }
     
     private var isLoginFieldsCompleted: Bool {
-        authVM.email.isEmail && !authVM.password.isEmpty
+        authViewModel.email.isEmail && !authViewModel.password.isEmpty
     }
     
     private var isSignupFieldsCompleted: Bool {
-        authVM.email.isEmail && !authVM.password.isEmpty && authVM.password == authVM.repeatPassword
+        authViewModel.email.isEmail && !authViewModel.password.isEmpty && authViewModel.password == authViewModel.repeatPassword
     }
 }
 
@@ -162,6 +168,6 @@ struct SignupView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(authViewModel: AuthViewModel())
     }
 }

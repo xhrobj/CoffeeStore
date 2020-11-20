@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @EnvironmentObject var authVM: AuthViewModel
+    @ObservedObject var authVM = AuthViewModel()
     
     @ObservedObject var productVM = ProductViewModel()
     
@@ -25,7 +25,7 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     ForEach(categories.keys.sorted(), id: \String.self) { key in
-                        ProductRow(categoryName: key.uppercased(), products: categories[key] ?? [])
+                        ProductRow(authViewModel: authVM, categoryName: key.uppercased(), products: categories[key] ?? [])
                             .frame(height: 320)
                             .padding(.top)
                             .padding(.bottom)
@@ -60,18 +60,18 @@ struct HomeView: View {
                 .sheet(isPresented: $isShowCart) {
                     if authVM.isLogin {
                         if !authVM.hasPin {
-                            PinCodeView(mode: .setup)
-                                .environmentObject(authVM)
+                            PinCodeView(authViewModel: authVM, mode: .setup)
+                            
                         } else if authVM.currentUser?.isCompleteFilled ?? false {
                             CartView()
                         } else {
                             FinishRegistrationView()
                         }
                     } else if authVM.hasPin {
-                        PinCodeView(mode: .check)
-                            .environmentObject(authVM)
+                        PinCodeView(authViewModel: authVM, mode: .check)
+                        
                     } else {
-                        LoginView()
+                        LoginView(authViewModel: authVM)
                     }
                 }
             )
