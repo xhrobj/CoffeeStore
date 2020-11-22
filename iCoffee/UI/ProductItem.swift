@@ -32,9 +32,3 @@ struct ProductItem: View {
         }
     }
 }
-
-struct ProductItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductItem(product: productData[0])
-    }
-}

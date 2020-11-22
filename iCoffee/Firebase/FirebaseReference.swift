@@ -10,6 +10,7 @@ enum FCollectionReference: String {
     case Menu
     case Order
     case Cart
+    case Promotion
 }
 
 func FirebaseReference(_ collectionReference: FCollectionReference) -> CollectionReference {

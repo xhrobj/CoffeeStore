@@ -25,10 +25,7 @@
 		D742234E254225D200FA7FD7 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D742234D254225D200FA7FD7 /* KeychainAccess */; };
 		D7422361254387F500FA7FD7 /* PinCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7422360254387F500FA7FD7 /* PinCodeView.swift */; };
 		D742237125449F5B00FA7FD7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7422367254469CF00FA7FD7 /* AuthViewModel.swift */; };
-		D7647112253B16CC001309FB /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7647111253B16CC001309FB /* ProductDetail.swift */; };
 		D78F4A8B25338FC000B20D0E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F4A8A25338FC000B20D0E /* Product.swift */; };
-		D78F4A8F2533916600B20D0E /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F4A8E2533916600B20D0E /* ProductRow.swift */; };
-		D78F4A92253394A200B20D0E /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F4A91253394A200B20D0E /* ProductItem.swift */; };
 		D7BF4D09253B21BE00C0D68C /* productData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF4D08253B21BE00C0D68C /* productData.swift */; };
 		D7BF4D0D253B304100C0D68C /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF4D0C253B304100C0D68C /* Cart.swift */; };
 		D7BF4D10253B796000C0D68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BF4D0F253B796000C0D68C /* GoogleService-Info.plist */; };
@@ -44,7 +41,59 @@
 		D7CB5D9D2557F75D0015D4DD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB5D9C2557F75D0015D4DD /* UserService.swift */; };
 		D7CB5DA42558653E0015D4DD /* FirebasePromises.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB5DA32558653E0015D4DD /* FirebasePromises.swift */; };
 		D7FA005425646BDC007E5C65 /* Firebase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */; };
+		D7FA008625686864007E5C65 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F4A91253394A200B20D0E /* ProductItem.swift */; };
+		D7FA008725686864007E5C65 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7647111253B16CC001309FB /* ProductDetail.swift */; };
+		D7FA008825686864007E5C65 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F4A8E2533916600B20D0E /* ProductRow.swift */; };
+		D7FA00CE2569AFFA007E5C65 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FA00CD2569AFFA007E5C65 /* WidgetKit.framework */; };
+		D7FA00D02569AFFA007E5C65 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FA00CF2569AFFA007E5C65 /* SwiftUI.framework */; };
+		D7FA00D32569AFFB007E5C65 /* iCoffeeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA00D22569AFFB007E5C65 /* iCoffeeWidget.swift */; };
+		D7FA00D62569AFFC007E5C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7FA00D52569AFFC007E5C65 /* Assets.xcassets */; };
+		D7FA00D82569AFFC007E5C65 /* iCoffeeWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D7FA00D42569AFFB007E5C65 /* iCoffeeWidget.intentdefinition */; };
+		D7FA00D92569AFFC007E5C65 /* iCoffeeWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D7FA00D42569AFFB007E5C65 /* iCoffeeWidget.intentdefinition */; };
+		D7FA00DC2569AFFC007E5C65 /* iCoffeeWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D7FA00CC2569AFFA007E5C65 /* iCoffeeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D7FA00EF2569BA09007E5C65 /* CodableFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = D7FA00EE2569BA09007E5C65 /* CodableFirebase */; };
+		D7FA00F12569BA0E007E5C65 /* CombineFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = D7FA00F02569BA0E007E5C65 /* CombineFirebase */; };
+		D7FA00F62569BAC7007E5C65 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF4D24253C4BB900C0D68C /* FirebaseReference.swift */; };
+		D7FA00FA2569BB97007E5C65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BF4D0F253B796000C0D68C /* GoogleService-Info.plist */; };
+		D7FA00FE2569BD9A007E5C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D73CB72F25336A3F0035C32C /* Assets.xcassets */; };
+		D7FA01142569BF6D007E5C65 /* ProductWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA01022569BDDA007E5C65 /* ProductWidgetView.swift */; };
+		D7FA01182569C62A007E5C65 /* Firebase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */; };
+		D7FA0136256A5EE1007E5C65 /* ProductPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA0130256A5E15007E5C65 /* ProductPromotion.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D7FA00DA2569AFFC007E5C65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D73CB72025336A3D0035C32C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7FA00CB2569AFFA007E5C65;
+			remoteInfo = iCoffeeWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D7FA0070256866D0007E5C65 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7FA00E02569AFFC007E5C65 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D7FA00DC2569AFFC007E5C65 /* iCoffeeWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D7102240254CA1F7002E50FC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -83,6 +132,15 @@
 		D7CB5D9C2557F75D0015D4DD /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D7CB5DA32558653E0015D4DD /* FirebasePromises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePromises.swift; sourceTree = "<group>"; };
 		D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Extensions.swift"; sourceTree = "<group>"; };
+		D7FA00CC2569AFFA007E5C65 /* iCoffeeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iCoffeeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7FA00CD2569AFFA007E5C65 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D7FA00CF2569AFFA007E5C65 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D7FA00D22569AFFB007E5C65 /* iCoffeeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCoffeeWidget.swift; sourceTree = "<group>"; };
+		D7FA00D42569AFFB007E5C65 /* iCoffeeWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iCoffeeWidget.intentdefinition; sourceTree = "<group>"; };
+		D7FA00D52569AFFC007E5C65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7FA00D72569AFFC007E5C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7FA01022569BDDA007E5C65 /* ProductWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductWidgetView.swift; sourceTree = "<group>"; };
+		D7FA0130256A5E15007E5C65 /* ProductPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPromotion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +154,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7FA00C92569AFFA007E5C65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7FA00EF2569BA09007E5C65 /* CodableFirebase in Frameworks */,
+				D7FA00F12569BA0E007E5C65 /* CombineFirebase in Frameworks */,
+				D7FA00D02569AFFA007E5C65 /* SwiftUI.framework in Frameworks */,
+				D7FA00CE2569AFFA007E5C65 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -103,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D73CB72A25336A3D0035C32C /* iCoffee */,
+				D7FA00D12569AFFB007E5C65 /* iCoffeeWidget */,
 				D73CB72925336A3D0035C32C /* Products */,
 				D7BF4D14253B7D8500C0D68C /* Frameworks */,
 			);
@@ -112,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				D73CB72825336A3D0035C32C /* iCoffee.app */,
+				D7FA00CC2569AFFA007E5C65 /* iCoffeeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +237,8 @@
 		D7BF4D14253B7D8500C0D68C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7FA00CD2569AFFA007E5C65 /* WidgetKit.framework */,
+				D7FA00CF2569AFFA007E5C65 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,6 +302,19 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		D7FA00D12569AFFB007E5C65 /* iCoffeeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D7FA00D22569AFFB007E5C65 /* iCoffeeWidget.swift */,
+				D7FA01022569BDDA007E5C65 /* ProductWidgetView.swift */,
+				D7FA00D42569AFFB007E5C65 /* iCoffeeWidget.intentdefinition */,
+				D7FA0130256A5E15007E5C65 /* ProductPromotion.swift */,
+				D7FA00D52569AFFC007E5C65 /* Assets.xcassets */,
+				D7FA00D72569AFFC007E5C65 /* Info.plist */,
+			);
+			path = iCoffeeWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,10 +325,13 @@
 				D73CB72425336A3D0035C32C /* Sources */,
 				D73CB72525336A3D0035C32C /* Frameworks */,
 				D73CB72625336A3D0035C32C /* Resources */,
+				D7FA0070256866D0007E5C65 /* Embed App Clips */,
+				D7FA00E02569AFFC007E5C65 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D7FA00DB2569AFFC007E5C65 /* PBXTargetDependency */,
 			);
 			name = iCoffee;
 			packageProductDependencies = (
@@ -254,6 +343,27 @@
 			productReference = D73CB72825336A3D0035C32C /* iCoffee.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D7FA00CB2569AFFA007E5C65 /* iCoffeeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7FA00DD2569AFFC007E5C65 /* Build configuration list for PBXNativeTarget "iCoffeeWidgetExtension" */;
+			buildPhases = (
+				D7FA00C82569AFFA007E5C65 /* Sources */,
+				D7FA00C92569AFFA007E5C65 /* Frameworks */,
+				D7FA00CA2569AFFA007E5C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iCoffeeWidgetExtension;
+			packageProductDependencies = (
+				D7FA00EE2569BA09007E5C65 /* CodableFirebase */,
+				D7FA00F02569BA0E007E5C65 /* CombineFirebase */,
+			);
+			productName = iCoffeeWidgetExtension;
+			productReference = D7FA00CC2569AFFA007E5C65 /* iCoffeeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -264,6 +374,9 @@
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					D73CB72725336A3D0035C32C = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					D7FA00CB2569AFFA007E5C65 = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -287,6 +400,7 @@
 			projectRoot = "";
 			targets = (
 				D73CB72725336A3D0035C32C /* iCoffee */,
+				D7FA00CB2569AFFA007E5C65 /* iCoffeeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -302,6 +416,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7FA00CA2569AFFA007E5C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7FA00D62569AFFC007E5C65 /* Assets.xcassets in Resources */,
+				D7FA00FE2569BD9A007E5C65 /* Assets.xcassets in Resources */,
+				D7FA00FA2569BB97007E5C65 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -313,13 +437,10 @@
 				D73CB72E25336A3D0035C32C /* HomeView.swift in Sources */,
 				D7BF4D25253C4BBA00C0D68C /* FirebaseReference.swift in Sources */,
 				D7CB5D8D2557425C0015D4DD /* OrderService.swift in Sources */,
-				D78F4A92253394A200B20D0E /* ProductItem.swift in Sources */,
 				D7BF4D33253CAE5A00C0D68C /* ProductViewModel.swift in Sources */,
 				D7BF4D0D253B304100C0D68C /* Cart.swift in Sources */,
-				D78F4A8F2533916600B20D0E /* ProductRow.swift in Sources */,
 				D7213A23253F82F90075B2BF /* CartView.swift in Sources */,
 				D7273C122545E56A0070D42E /* ContentView.swift in Sources */,
-				D7647112253B16CC001309FB /* ProductDetail.swift in Sources */,
 				D7422361254387F500FA7FD7 /* PinCodeView.swift in Sources */,
 				D7273BD025454EDB0070D42E /* Authentication+Pincode.swift in Sources */,
 				D723FCF9255B2F18003B8FFB /* UserViewModel.swift in Sources */,
@@ -331,19 +452,44 @@
 				D73CB72C25336A3D0035C32C /* iCoffeeApp.swift in Sources */,
 				D7CB5D9A2557F0DE0015D4DD /* ProductService.swift in Sources */,
 				D7102241254CA1F7002E50FC /* LoginView.swift in Sources */,
+				D7FA008625686864007E5C65 /* ProductItem.swift in Sources */,
 				D710224C254E09C9002E50FC /* Authentication.swift in Sources */,
+				D7FA008825686864007E5C65 /* ProductRow.swift in Sources */,
 				D7CB5DA42558653E0015D4DD /* FirebasePromises.swift in Sources */,
 				D7213A20253F64300075B2BF /* CartViewModel.swift in Sources */,
 				D7102244254CABCA002E50FC /* FinishRegistrationView.swift in Sources */,
 				D7CB5D91255745270015D4DD /* CartService.swift in Sources */,
 				D7CB5D84255736C30015D4DD /* Order.swift in Sources */,
+				D7FA008725686864007E5C65 /* ProductDetail.swift in Sources */,
+				D7FA00D92569AFFC007E5C65 /* iCoffeeWidget.intentdefinition in Sources */,
 				D7CB5D942557BF1B0015D4DD /* OrderViewModel.swift in Sources */,
 				D742237125449F5B00FA7FD7 /* AuthViewModel.swift in Sources */,
 				D7102247254CBF1B002E50FC /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7FA00C82569AFFA007E5C65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7FA0136256A5EE1007E5C65 /* ProductPromotion.swift in Sources */,
+				D7FA00F62569BAC7007E5C65 /* FirebaseReference.swift in Sources */,
+				D7FA00D82569AFFC007E5C65 /* iCoffeeWidget.intentdefinition in Sources */,
+				D7FA00D32569AFFB007E5C65 /* iCoffeeWidget.swift in Sources */,
+				D7FA01182569C62A007E5C65 /* Firebase+Extensions.swift in Sources */,
+				D7FA01142569BF6D007E5C65 /* ProductWidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D7FA00DB2569AFFC007E5C65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7FA00CB2569AFFA007E5C65 /* iCoffeeWidgetExtension */;
+			targetProxy = D7FA00DA2569AFFC007E5C65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D73CB73525336A3F0035C32C /* Debug */ = {
@@ -512,6 +658,50 @@
 			};
 			name = Release;
 		};
+		D7FA00DE2569AFFC007E5C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = iCoffeeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.mishe1.iCoffee.iCoffeeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D7FA00DF2569AFFC007E5C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = iCoffeeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.mishe1.iCoffee.iCoffeeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -529,6 +719,15 @@
 			buildConfigurations = (
 				D73CB73825336A3F0035C32C /* Debug */,
 				D73CB73925336A3F0035C32C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7FA00DD2569AFFC007E5C65 /* Build configuration list for PBXNativeTarget "iCoffeeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7FA00DE2569AFFC007E5C65 /* Debug */,
+				D7FA00DF2569AFFC007E5C65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -574,6 +773,16 @@
 			productName = CodableFirebase;
 		};
 		D7CB5D88255740E40015D4DD /* CombineFirebase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7CB5D87255740E40015D4DD /* XCRemoteSwiftPackageReference "CombineFirebase" */;
+			productName = CombineFirebase;
+		};
+		D7FA00EE2569BA09007E5C65 /* CodableFirebase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7BF4D2A253CA0EE00C0D68C /* XCRemoteSwiftPackageReference "CodableFirebase" */;
+			productName = CodableFirebase;
+		};
+		D7FA00F02569BA0E007E5C65 /* CombineFirebase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D7CB5D87255740E40015D4DD /* XCRemoteSwiftPackageReference "CombineFirebase" */;
 			productName = CombineFirebase;

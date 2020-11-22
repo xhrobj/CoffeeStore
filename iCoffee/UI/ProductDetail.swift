@@ -93,6 +93,6 @@ struct OrderButton: View {
 
 struct ProductDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetail(authViewModel: AuthViewModel(), product: productData[0])
+        ProductDetail(authViewModel: AuthViewModel(), product: productDataMock)
     }
 }

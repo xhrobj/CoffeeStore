@@ -33,6 +33,6 @@ struct ProductRow: View {
 
 struct DrinkRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductRow(authViewModel: AuthViewModel(), categoryName: "HOT", products: productData)
+        ProductRow(authViewModel: AuthViewModel(), categoryName: "HOT", products: [productDataMock])
     }
 }
