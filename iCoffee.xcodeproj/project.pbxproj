@@ -55,7 +55,6 @@
 		D7FA00F12569BA0E007E5C65 /* CombineFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = D7FA00F02569BA0E007E5C65 /* CombineFirebase */; };
 		D7FA00F62569BAC7007E5C65 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF4D24253C4BB900C0D68C /* FirebaseReference.swift */; };
 		D7FA00FA2569BB97007E5C65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BF4D0F253B796000C0D68C /* GoogleService-Info.plist */; };
-		D7FA00FE2569BD9A007E5C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D73CB72F25336A3F0035C32C /* Assets.xcassets */; };
 		D7FA01142569BF6D007E5C65 /* ProductWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA01022569BDDA007E5C65 /* ProductWidgetView.swift */; };
 		D7FA01182569C62A007E5C65 /* Firebase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA005325646BDC007E5C65 /* Firebase+Extensions.swift */; };
 		D7FA0136256A5EE1007E5C65 /* ProductPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA0130256A5E15007E5C65 /* ProductPromotion.swift */; };
@@ -421,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7FA00D62569AFFC007E5C65 /* Assets.xcassets in Resources */,
-				D7FA00FE2569BD9A007E5C65 /* Assets.xcassets in Resources */,
 				D7FA00FA2569BB97007E5C65 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
