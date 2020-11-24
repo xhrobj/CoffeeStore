@@ -13,8 +13,8 @@ struct ProductPromotion: Codable, Equatable, Hashable {
 }
 
 let productPromotionMock = ProductPromotion(
-    name: "-",
-    imageName: "espresso",
-    oldPrice: 0,
-    price: 0
+    name: "Колд-брю",
+    imageName: "cold brew",
+    oldPrice: 125,
+    price: 70
 )
